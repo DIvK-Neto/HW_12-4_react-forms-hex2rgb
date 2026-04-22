@@ -1,10 +1,12 @@
 # Конвертер цветов HEX → RGB
 
-[![GitHub Pages](https://img.shields.io/badge/demo-github%20pages-blue)](https://DIvK-Neto.github.io/HW_12-4_react-forms-hex2rgb/)
+[![CI/CD](https://github.com/DIvK-Neto/HW_12-4_react-forms-hex2rgb/actions/workflows/web.yml/badge.svg)](https://github.com/DIvK-Neto/HW_12-4_react-forms-hex2rgb/actions/workflows/web.yml)
 
 [Демо "Конвертер цветов"](https://DIvK-Neto.github.io/HW_12-4_react-forms-hex2rgb/)
 
-![Скриншот приложения](docs/screenshot.png)
+![Скриншот приложения 1](docs/screenshot/screenshot_1.png)
+![Скриншот приложения 2](docs/screenshot/screenshot_2.png)
+![Скриншот приложения 3](docs/screenshot/screenshot_3.png)
 
 Реализация конвертера цветов на React + TypeScript. При вводе HEX-кода (например, `#9921ff`) после ввода всех 7 символов автоматически отображается RGB-значение, а фон страницы меняется на указанный цвет. При вводе менее 7 символов показывается подсказка о количестве оставшихся символов. При неверном формате (включая ввод более 7 символов) выводится сообщение об ошибке.
 
