@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { hexToRgbString } from '../../utils/hexToRgb';
 import './ColorConverter.css';
 
@@ -7,18 +7,6 @@ export const ColorConverter: React.FC = () => {
   const [rgbResult, setRgbResult] = useState<string | null>('rgb(153, 33, 255)');
   const [error, setError] = useState<boolean>(false);
   const [remaining, setRemaining] = useState<number>(0);
-
-  useEffect(() => {
-    return () => {
-      document.body.style.backgroundColor = '';
-    };
-  }, []);
-
-  useEffect(() => {
-    if (!error && rgbResult) {
-      document.body.style.backgroundColor = rgbResult;
-    }
-  }, [rgbResult, error]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
@@ -56,17 +44,31 @@ export const ColorConverter: React.FC = () => {
     return '';
   };
 
+  const backgroundColor = !error && rgbResult ? rgbResult : '';
+
   return (
-    <div className="container">
-      <input
-        type="text"
-        className="input-field"
-        value={inputValue}
-        onChange={handleChange}
-        placeholder="Введите код цвета..."
-        aria-invalid={error}
-      />
-      <span className={`result ${error ? 'error' : ''}`}>{getMessage()}</span>
+    <div
+      className="converter-wrapper"
+      style={{
+        backgroundColor: backgroundColor,
+        transition: 'background-color 0.3s ease',
+        minHeight: '100vh',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}
+    >
+      <div className="container">
+        <input
+          type="text"
+          className="input-field"
+          value={inputValue}
+          onChange={handleChange}
+          placeholder="Введите код цвета..."
+          aria-invalid={error}
+        />
+        <span className={`result ${error ? 'error' : ''}`}>{getMessage()}</span>
+      </div>
     </div>
   );
 };
